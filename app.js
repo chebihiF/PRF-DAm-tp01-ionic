@@ -29,8 +29,20 @@ confirmBtn.addEventListener('click', () => {
         return ;
     }
     const newItem = document.createElement('ion-item');
+    
+    const deleteBtn = document.createElement('ion-button');
+    deleteBtn.textContent = "Delete";
+    deleteBtn.setAttribute('slot','end');
+    deleteBtn.setAttribute('color','danger')
+
     newItem.textContent = entredReason + ': $' + entredAmount;
+    newItem.appendChild(deleteBtn);
     expensesList.appendChild(newItem);
+
+    deleteBtn.addEventListener('click', () => {
+        expensesList.removeChild(newItem);
+    })
+
     totalExpenses+= +entredAmount ;
     totalExpensesOutput.textContent = totalExpenses
     clear();
